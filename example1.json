@@ -1,0 +1,16 @@
+{
+  "manifest-id": 4,
+  "manifest-version": 3,
+  "number-target-hardware": 2,
+  "target-hardware-versions": [
+    2,
+    3
+  ],
+  "firmware-version": 5,
+  "firmware-image-type": "full",
+  "firmware-data-type": "uncompressed",
+  "hash-algorithm-id": "SHA-256",
+  "signature-algorithm-id": "ECDSA",
+  "signature-size": 72,
+  "payload-signature": "canbeanythingmatchingtheabovesize"
+}

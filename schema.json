@@ -1,0 +1,140 @@
+{
+    "$id": "https://lora-alliance.org/about-lorawan",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "LoRaWAN FUOTA Manifest",
+    "type": "object",
+    "required": [
+        "manifest-id",
+        "manifest-version",
+        "number-target-hardware",
+        "target-hardware-versions",
+        "firmware-version",
+        "firmware-image-type",
+        "firmware-data-type",
+        "hash-algorithm-id",
+        "signature-algorithm-id",
+        "signature-size",
+        "payload-signature"
+    ],
+    "properties": {
+        "manifest-id": {
+            "description": "The manifest package identifier, 4 is firmware management id",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "manifest-version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "number-target-hardware": {
+            "description": "This should allow us to define multiple HW versions, but maybe there is a better solution!!",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "target-hardware-versions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 4294967295
+            }
+        },
+        "firmware-version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+        },
+        "firmware-image-type": {
+            "type": "string",
+            "enum": [
+                "full",
+                "delta"
+            ]
+        },
+        "firmware-data-type": {
+            "type": "string",
+            "enum": [
+                "uncompressed",
+                "compressed"
+            ]
+        },
+        "hash-algorithm-id": {
+            "type": "string",
+            "enum": [
+                "MD5",
+                "SHA-256"
+            ]
+        },
+        "signature-algorithm-id": {
+            "type": "string",
+            "enum": [
+                "DSA-PSS",
+                "ECDSA",
+                "HMAC",
+                "AES-CBC"
+            ]
+        },
+        "signature-size": {
+            "description": "now it's one byte, but we might need to make it two or four bytes to ensure we cover all algorithms output sizes",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "payload-signature": {
+            "type": "string"
+        },
+        "compression-type": {
+            "description": "we need to define supported initial compression types, now using IETF ones",
+            "type": "string",
+            "enum": [
+                "gzip",
+                "bzip2",
+                "deflate",
+                "lz4",
+                "lzma"
+            ]
+        },
+        "diff-type": {
+            "description": "we need to define supported diff types",
+            "type": "string",
+            "enum": [
+                "jojodiff",
+                "RMTD",
+                "R3diff",
+                "MoRE"
+            ]
+        },
+        "target-firmware-version": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+        },
+        "previous-image-size": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 4294967295
+        },
+        "previous-firmware-signature-size": {
+            "description": "now it's one byte, but we might need to make it two or four bytes to ensure we cover all algorithms output sizes",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "previous-firmware-payload-signature": {
+            "type": "string"
+        },
+        "app-info-size": {
+            "description": "now it's one byte, but we might need to make it two to allow for more info",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 255
+        },
+        "app-info-bytes": {
+            "type": "string"
+        }
+    }
+}
