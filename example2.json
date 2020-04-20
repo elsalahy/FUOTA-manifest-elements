@@ -1,24 +1,24 @@
 {
-  "manifest-id": 4,
-  "manifest-version": 3,
-  "number-target-hardware": 2,
-  "target-hardware-versions": [
+  "manifest_id": 4,
+  "manifest_version": 3,
+  "number_target_hardware": 2,
+  "target_hardware_versions": [
     2,
     3
   ],
-  "firmware-version": 5,
-  "firmware-image-type": "delta",
-  "firmware-data-type": "compressed",
-  "hash-algorithm-id": "SHA-256",
-  "signature-algorithm-id": "ECDSA",
-  "signature-size": 72,
-  "payload-signature": "canbeanythingmatchingtheabovesize",
-  "compression-type": "deflate",
-  "diff-type": "jojodiff",
-  "target-firmware-version":4,
-  "previous-image-size":200,
-  "previous-firmware-signature-size": 72,
-  "previous-firmware-payload-signature":"canbeanythingmatchingtheabovesize",
-  "app-info-size":20,
-  "app-info-bytes":"canbeanythingmatchingtheabovesize"
+  "firmware_version": 5,
+  "firmware_image_type": "delta",
+  "firmware_data_type": "compressed",
+  "hash_algorithm_id": "SHA_256",
+  "signature_algorithm_id": "ECDSA",
+  "signature_size": 72,
+  "payload_signature": "canbeanythingmatchingtheabovesize",
+  "compression_type": "deflate",
+  "diff_type": "jojodiff",
+  "target_firmware_version":4,
+  "previous_image_size":200,
+  "previous_firmware_signature_size": 72,
+  "previous_firmware_payload_signature":"canbeanythingmatchingtheabovesize",
+  "app_info_size":20,
+  "app_info_bytes":"canbeanythingmatchingtheabovesize"
 }

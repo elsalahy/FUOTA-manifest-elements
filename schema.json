@@ -1,40 +1,40 @@
 {
-    "$id": "https://lora-alliance.org/about-lorawan",
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://lora-alliance.org/about_lorawan",
+    "$schema": "http://json-schema.org/draft_07/schema#",
     "title": "LoRaWAN FUOTA Manifest",
     "type": "object",
     "required": [
-        "manifest-id",
-        "manifest-version",
-        "number-target-hardware",
-        "target-hardware-versions",
-        "firmware-version",
-        "firmware-image-type",
-        "firmware-data-type",
-        "hash-algorithm-id",
-        "signature-algorithm-id",
-        "signature-size",
-        "payload-signature"
+        "manifest_id",
+        "manifest_version",
+        "number_target_hardware",
+        "target_hardware_versions",
+        "firmware_version",
+        "firmware_image_type",
+        "firmware_data_type",
+        "hash_algorithm_id",
+        "signature_algorithm_id",
+        "signature_size",
+        "payload_signature"
     ],
     "properties": {
-        "manifest-id": {
+        "manifest_id": {
             "description": "The manifest package identifier, 4 is firmware management id",
             "type": "integer",
             "minimum": 0,
             "maximum": 255
         },
-        "manifest-version": {
+        "manifest_version": {
             "type": "integer",
             "minimum": 0,
             "maximum": 255
         },
-        "number-target-hardware": {
+        "number_target_hardware": {
             "description": "This should allow us to define multiple HW versions, but maybe there is a better solution!!",
             "type": "integer",
             "minimum": 0,
             "maximum": 255
         },
-        "target-hardware-versions": {
+        "target_hardware_versions": {
             "type": "array",
             "minItems": 1,
             "items": {
@@ -43,51 +43,52 @@
                 "maximum": 4294967295
             }
         },
-        "firmware-version": {
+        "firmware_version": {
             "type": "integer",
             "minimum": 0,
             "maximum": 4294967295
         },
-        "firmware-image-type": {
+        "firmware_image_type": {
             "type": "string",
             "enum": [
                 "full",
                 "delta"
             ]
         },
-        "firmware-data-type": {
+        "firmware_data_type": {
             "type": "string",
             "enum": [
                 "uncompressed",
                 "compressed"
             ]
         },
-        "hash-algorithm-id": {
+        "hash_algorithm_id": {
             "type": "string",
             "enum": [
                 "MD5",
-                "SHA-256"
+                "SHA_256"
             ]
         },
-        "signature-algorithm-id": {
+        "signature_algorithm_id": {
             "type": "string",
             "enum": [
-                "DSA-PSS",
+                "DSA_PSS",
                 "ECDSA",
                 "HMAC",
-                "AES-CBC"
+                "AES_CBC"
             ]
         },
-        "signature-size": {
+        "signature_size": {
             "description": "now it's one byte, but we might need to make it two or four bytes to ensure we cover all algorithms output sizes",
             "type": "integer",
             "minimum": 0,
             "maximum": 255
         },
-        "payload-signature": {
-            "type": "string"
+        "payload_signature": {
+            "type": "string",
+            "contentEncoding": "binary"
         },
-        "compression-type": {
+        "compression_type": {
             "description": "we need to define supported initial compression types, now using IETF ones",
             "type": "string",
             "enum": [
@@ -98,7 +99,7 @@
                 "lzma"
             ]
         },
-        "diff-type": {
+        "diff_type": {
             "description": "we need to define supported diff types",
             "type": "string",
             "enum": [
@@ -108,33 +109,35 @@
                 "MoRE"
             ]
         },
-        "target-firmware-version": {
+        "target_firmware_version": {
             "type": "integer",
             "minimum": 0,
             "maximum": 4294967295
         },
-        "previous-image-size": {
+        "previous_image_size": {
             "type": "integer",
             "minimum": 0,
             "maximum": 4294967295
         },
-        "previous-firmware-signature-size": {
+        "previous_firmware_signature_size": {
             "description": "now it's one byte, but we might need to make it two or four bytes to ensure we cover all algorithms output sizes",
             "type": "integer",
             "minimum": 0,
             "maximum": 255
         },
-        "previous-firmware-payload-signature": {
-            "type": "string"
+        "previous_firmware_payload_signature": {
+            "type": "string",
+            "contentEncoding": "binary"
         },
-        "app-info-size": {
+        "app_info_size": {
             "description": "now it's one byte, but we might need to make it two to allow for more info",
             "type": "integer",
             "minimum": 0,
             "maximum": 255
         },
-        "app-info-bytes": {
-            "type": "string"
+        "app_info_bytes": {
+            "type": "string",
+            "contentEncoding": "binary"
         }
     }
 }
