@@ -1,0 +1,1 @@
+FUOTA-manifest-elements
