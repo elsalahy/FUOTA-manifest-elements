@@ -7,7 +7,7 @@ go get github.com/xeipuuv/gojsonschema
 ```
 and then to validate the examples:
 ```
-go run main.go
+go run *.go
 ```
 
 Feel free to edit and test various examples.

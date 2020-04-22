@@ -20,18 +20,18 @@
         "manifest_id": {
             "description": "The manifest package identifier, 4 is firmware management id",
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 255
         },
         "manifest_version": {
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 255
         },
         "number_target_hardware": {
             "description": "This should allow us to define multiple HW versions, but maybe there is a better solution!!",
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 255
         },
         "target_hardware_versions": {
@@ -39,13 +39,13 @@
             "minItems": 1,
             "items": {
                 "type": "integer",
-                "minimum": 0,
+                "minimum": 1,
                 "maximum": 4294967295
             }
         },
         "firmware_version": {
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 4294967295
         },
         "firmware_image_type": {
@@ -81,7 +81,7 @@
         "signature_size": {
             "description": "now it's one byte, but we might need to make it two or four bytes to ensure we cover all algorithms output sizes",
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 255
         },
         "payload_signature": {
@@ -111,18 +111,18 @@
         },
         "target_firmware_version": {
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 4294967295
         },
         "previous_image_size": {
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 4294967295
         },
         "previous_firmware_signature_size": {
             "description": "now it's one byte, but we might need to make it two or four bytes to ensure we cover all algorithms output sizes",
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 255
         },
         "previous_firmware_payload_signature": {
@@ -132,7 +132,7 @@
         "app_info_size": {
             "description": "now it's one byte, but we might need to make it two to allow for more info",
             "type": "integer",
-            "minimum": 0,
+            "minimum": 1,
             "maximum": 255
         },
         "app_info_bytes": {
