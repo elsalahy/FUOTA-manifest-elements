@@ -1,16 +1,16 @@
 {
-  "manifest_id": 4,
-  "manifest_version": 3,
-  "number_target_hardware": 2,
-  "target_hardware_versions": [
+  "manifestId": 4,
+  "manifestVersion": 3,
+  "numberTargetHardware": 2,
+  "targetHardwareVersions": [
     2,
     3
   ],
-  "firmware_version": 5,
-  "firmware_image_type": "full",
-  "firmware_data_type": "uncompressed",
-  "hash_algorithm_id": "SHA_256",
-  "signature_algorithm_id": "ECDSA",
-  "signature_size": 72,
-  "payload_signature": "canbeanythingmatchingtheabovesize"
+  "firmwareVersion": 5,
+  "firmwareImageType": "full",
+  "firmwareDataType": "uncompressed",
+  "hashAlgorithmId": "SHA256",
+  "signatureAlgorithmId": "ECDSA",
+  "signatureSize": 72,
+  "signatureValue": "canbeanythingmatchingtheabovesize"
 }

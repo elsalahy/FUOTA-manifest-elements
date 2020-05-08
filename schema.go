@@ -6,25 +6,25 @@ import (
 )
 
 type manifest struct {
-	Manifest_id                         uint8    `json:"manifest_id"`
-	Manifest_version                    uint8    `json:"manifest_version"`
-	Number_target_hardware              uint8    `json:"number_target_hardware"`
-	Target_hardware_versions            []uint32 `json:"target_hardware_versions"`
-	Firmware_version                    uint32   `json:"firmware_version"`
-	Firmware_image_type                 string   `json:"firmware_image_type"`
-	Diff_type                           string   `json:"diff_type"`
-	Previous_image_size                 uint32   `json:"previous_image_size"`
-	Target_firmware_version             uint32   `json:"target_firmware_version"`
-	Previous_firmware_signature_size    uint8    `json:"previous_firmware_signature_size"`
-	Previous_firmware_payload_signature string   `json:"previous_firmware_payload_signature"`
-	Firmware_data_type                  string   `json:"firmware_data_type"`
-	Compression_type                    string   `json:"compression_type"`
-	Hash_algorithm_id                   string   `json:"hash_algorithm_id"`
-	Signature_algorithm_id              string   `json:"signature_algorithm_id"`
-	Signature_size                      uint8    `json:"signature_size"`
-	Payload_signature                   string   `json:"payload_signature"`
-	App_info_size                       uint8    `json:"app_info_size"`
-	App_info_bytes                      string   `json:"app_info_bytes"`
+	ManifestId                     uint8    `json:"manifestId"`
+	ManifestVersion                uint8    `json:"manifestVersion"`
+	NumberTargetHardware           uint8    `json:"numberTargetHardware"`
+	TargetHardwareVersions         []uint32 `json:"targetHardwareVersions"`
+	FirmwareVersion                uint32   `json:"firmwareVersion"`
+	FirmwareImageType              string   `json:"firmwareImageType"`
+	DiffType                       string   `json:"diffType"`
+	PreviousImageSize              uint32   `json:"previousImageSize"`
+	TargetFirmwareVersion          uint32   `json:"targetFirmwareVersion"`
+	PreviousFirmwareSignatureSize  uint8    `json:"previousFirmwareSignatureSize"`
+	PreviousFirmwareSignatureValue string   `json:"previousFirmwareSignatureValue"`
+	FirmwareDataType               string   `json:"firmwareDataType"`
+	CompressionType                string   `json:"compressionType"`
+	HashAlgorithmId                string   `json:"hashAlgorithmId"`
+	SignatureAlgorithmId           string   `json:"signatureAlgorithmId"`
+	SignatureSize                  uint8    `json:"signatureSize"`
+	SignatureValue                 string   `json:"signatureValue"`
+	AppInfoSize                    uint8    `json:"appInfoSize"`
+	AppInfoBytes                   string   `json:"appInfoBytes"`
 }
 
 type manifestEnum uint8
@@ -89,41 +89,41 @@ var enumToValue = map[string]manifestEnum{
 
 // Todo improve the function to avoid processing each element alone
 func writeBinary(input *manifest, file *os.File) {
-	binary.Write(file, binary.BigEndian, input.Manifest_id)
-	binary.Write(file, binary.BigEndian, input.Manifest_version)
-	binary.Write(file, binary.BigEndian, input.Number_target_hardware)
-	for _, u := range input.Target_hardware_versions {
+	binary.Write(file, binary.BigEndian, input.ManifestId)
+	binary.Write(file, binary.BigEndian, input.ManifestVersion)
+	binary.Write(file, binary.BigEndian, input.NumberTargetHardware)
+	for _, u := range input.TargetHardwareVersions {
 		binary.Write(file, binary.BigEndian, u)
 	}
-	binary.Write(file, binary.BigEndian, input.Firmware_version)
-	binary.Write(file, binary.BigEndian, enumToValue[input.Firmware_image_type])
-	if input.Diff_type != "" {
-		binary.Write(file, binary.BigEndian, enumToValue[input.Diff_type])
+	binary.Write(file, binary.BigEndian, input.FirmwareVersion)
+	binary.Write(file, binary.BigEndian, enumToValue[input.FirmwareImageType])
+	if input.DiffType != "" {
+		binary.Write(file, binary.BigEndian, enumToValue[input.DiffType])
 	}
-	if input.Target_firmware_version != 0 {
-		binary.Write(file, binary.BigEndian, input.Target_firmware_version)
+	if input.TargetFirmwareVersion != 0 {
+		binary.Write(file, binary.BigEndian, input.TargetFirmwareVersion)
 	}
-	if input.Previous_image_size != 0 {
-		binary.Write(file, binary.BigEndian, input.Previous_image_size)
+	if input.PreviousImageSize != 0 {
+		binary.Write(file, binary.BigEndian, input.PreviousImageSize)
 	}
-	if input.Previous_firmware_signature_size != 0 {
-		if input.Previous_firmware_payload_signature != "" {
-			binary.Write(file, binary.BigEndian, input.Previous_firmware_signature_size)
-			binary.Write(file, binary.BigEndian, []byte(input.Previous_firmware_payload_signature))
+	if input.PreviousFirmwareSignatureSize != 0 {
+		if input.PreviousFirmwareSignatureValue != "" {
+			binary.Write(file, binary.BigEndian, input.PreviousFirmwareSignatureSize)
+			binary.Write(file, binary.BigEndian, []byte(input.PreviousFirmwareSignatureValue))
 		}
 	}
-	binary.Write(file, binary.BigEndian, enumToValue[input.Firmware_data_type])
-	if input.Compression_type != "" {
-		binary.Write(file, binary.BigEndian, enumToValue[input.Compression_type])
+	binary.Write(file, binary.BigEndian, enumToValue[input.FirmwareDataType])
+	if input.CompressionType != "" {
+		binary.Write(file, binary.BigEndian, enumToValue[input.CompressionType])
 	}
-	binary.Write(file, binary.BigEndian, enumToValue[input.Hash_algorithm_id])
-	binary.Write(file, binary.BigEndian, enumToValue[input.Signature_algorithm_id])
-	binary.Write(file, binary.BigEndian, input.Signature_size)
-	binary.Write(file, binary.BigEndian, []byte(input.Payload_signature))
-	if input.App_info_size != 0 {
-		if input.App_info_bytes != "" {
-			binary.Write(file, binary.BigEndian, input.App_info_size)
-			binary.Write(file, binary.BigEndian, []byte(input.App_info_bytes))
+	binary.Write(file, binary.BigEndian, enumToValue[input.HashAlgorithmId])
+	binary.Write(file, binary.BigEndian, enumToValue[input.SignatureAlgorithmId])
+	binary.Write(file, binary.BigEndian, input.SignatureSize)
+	binary.Write(file, binary.BigEndian, []byte(input.SignatureValue))
+	if input.AppInfoSize != 0 {
+		if input.AppInfoBytes != "" {
+			binary.Write(file, binary.BigEndian, input.AppInfoSize)
+			binary.Write(file, binary.BigEndian, []byte(input.AppInfoBytes))
 		}
 	}
 }
