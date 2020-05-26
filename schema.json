@@ -6,6 +6,7 @@
     "required": [
         "manifestId",
         "manifestVersion",
+        "manifestElements",
         "numberTargetHardware",
         "targetHardwareVersions",
         "firmwareVersion",
@@ -27,6 +28,11 @@
             "type": "integer",
             "minimum": 1,
             "maximum": 255
+        },
+        "manifestElements": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4294967295
         },
         "numberTargetHardware": {
             "description": "This should allow us to define multiple HW versions, but maybe there is a better solution!!",

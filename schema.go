@@ -8,6 +8,7 @@ import (
 type manifest struct {
 	ManifestId                     uint8    `json:"manifestId"`
 	ManifestVersion                uint8    `json:"manifestVersion"`
+	ManifestElements               uint32   `json:"manifestElements"`
 	NumberTargetHardware           uint8    `json:"numberTargetHardware"`
 	TargetHardwareVersions         []uint32 `json:"targetHardwareVersions"`
 	FirmwareVersion                uint32   `json:"firmwareVersion"`
@@ -92,6 +93,7 @@ func writeBinary(input *manifest, file *os.File) {
 	binary.Write(file, binary.BigEndian, input.ManifestId)
 	binary.Write(file, binary.BigEndian, input.ManifestVersion)
 	binary.Write(file, binary.BigEndian, input.NumberTargetHardware)
+	binary.Write(file, binary.BigEndian, input.ManifestElements)
 	for _, u := range input.TargetHardwareVersions {
 		binary.Write(file, binary.BigEndian, u)
 	}

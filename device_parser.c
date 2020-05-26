@@ -1,9 +1,12 @@
 #include <stdio.h>
 
+#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
+
 struct manifest
 {
 u_int8_t ManifestId;
 u_int8_t ManifestVersion;
+u_int32_t ManifestElements;
 u_int8_t NumberTargetHardware;
 u_int32_t TargetHardwareVersions[2];
 u_int32_t FirmwareVersion;
@@ -34,6 +37,7 @@ int main()
     fread(&r,sizeof(struct manifest),1,f);
     printf("%d\n",r.ManifestId);
     printf("%d\n",r.ManifestVersion);
+    printf("%d\n",r.ManifestElements);
     fclose(f);
     printf("\n");
     return 0;

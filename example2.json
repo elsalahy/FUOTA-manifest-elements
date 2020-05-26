@@ -1,6 +1,7 @@
 {
   "manifestId": 4,
   "manifestVersion": 3,
+  "manifestElements": 65535,
   "numberTargetHardware": 2,
   "targetHardwareVersions": [
     2,
