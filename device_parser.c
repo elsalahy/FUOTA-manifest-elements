@@ -5,7 +5,7 @@ struct manifest
 u_int8_t ManifestId;
 u_int8_t ManifestVersion;
 u_int8_t NumberTargetHardware;
-u_int8_t TargetHardwareVersions[2];
+u_int32_t TargetHardwareVersions[2];
 u_int32_t FirmwareVersion;
 u_int8_t FirmwareImageType;
 u_int8_t DiffType;
