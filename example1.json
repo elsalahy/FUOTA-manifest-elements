@@ -1,9 +1,9 @@
 {
   "manifestId": 4,
   "manifestVersion": 3,
-  "numberTargetHardware": 2,
-  "targetHardwareVersions": [
-    2,
+  "targetHardwareCount": 2,
+  "targetHardwareUID": [
+    5,
     3
   ],
   "firmwareVersion": 5,

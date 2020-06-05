@@ -8,8 +8,8 @@ import (
 type manifest struct {
 	ManifestId                     uint8    `json:"manifestId"`
 	ManifestVersion                uint8    `json:"manifestVersion"`
-	NumberTargetHardware           uint8    `json:"numberTargetHardware"`
-	TargetHardwareVersions         []uint32 `json:"targetHardwareVersions"`
+	TargetHardwareCount            uint8    `json:"targetHardwareCount"`
+	TargetHardwareUID              []uint32 `json:"targetHardwareUID"`
 	FirmwareVersion                uint32   `json:"firmwareVersion"`
 	FirmwareImageType              string   `json:"firmwareImageType"`
 	DiffType                       string   `json:"diffType"`
@@ -89,41 +89,41 @@ var enumToValue = map[string]manifestEnum{
 
 // Todo improve the function to avoid processing each element alone
 func writeBinary(input *manifest, file *os.File) {
-	binary.Write(file, binary.BigEndian, input.ManifestId)
-	binary.Write(file, binary.BigEndian, input.ManifestVersion)
-	binary.Write(file, binary.BigEndian, input.NumberTargetHardware)
-	for _, u := range input.TargetHardwareVersions {
-		binary.Write(file, binary.BigEndian, u)
+	binary.Write(file, binary.LittleEndian, input.ManifestId)
+	binary.Write(file, binary.LittleEndian, input.ManifestVersion)
+	binary.Write(file, binary.LittleEndian, input.TargetHardwareCount)
+	for _, u := range input.TargetHardwareUID {
+		binary.Write(file, binary.LittleEndian, u)
 	}
-	binary.Write(file, binary.BigEndian, input.FirmwareVersion)
-	binary.Write(file, binary.BigEndian, enumToValue[input.FirmwareImageType])
+	binary.Write(file, binary.LittleEndian, input.FirmwareVersion)
+	binary.Write(file, binary.LittleEndian, enumToValue[input.FirmwareImageType])
 	if input.DiffType != "" {
-		binary.Write(file, binary.BigEndian, enumToValue[input.DiffType])
+		binary.Write(file, binary.LittleEndian, enumToValue[input.DiffType])
 	}
 	if input.TargetFirmwareVersion != 0 {
-		binary.Write(file, binary.BigEndian, input.TargetFirmwareVersion)
+		binary.Write(file, binary.LittleEndian, input.TargetFirmwareVersion)
 	}
 	if input.PreviousImageSize != 0 {
-		binary.Write(file, binary.BigEndian, input.PreviousImageSize)
+		binary.Write(file, binary.LittleEndian, input.PreviousImageSize)
 	}
 	if input.PreviousFirmwareSignatureSize != 0 {
 		if input.PreviousFirmwareSignatureValue != "" {
-			binary.Write(file, binary.BigEndian, input.PreviousFirmwareSignatureSize)
-			binary.Write(file, binary.BigEndian, []byte(input.PreviousFirmwareSignatureValue))
+			binary.Write(file, binary.LittleEndian, input.PreviousFirmwareSignatureSize)
+			binary.Write(file, binary.LittleEndian, []byte(input.PreviousFirmwareSignatureValue))
 		}
 	}
-	binary.Write(file, binary.BigEndian, enumToValue[input.FirmwareDataType])
+	binary.Write(file, binary.LittleEndian, enumToValue[input.FirmwareDataType])
 	if input.CompressionType != "" {
-		binary.Write(file, binary.BigEndian, enumToValue[input.CompressionType])
+		binary.Write(file, binary.LittleEndian, enumToValue[input.CompressionType])
 	}
-	binary.Write(file, binary.BigEndian, enumToValue[input.HashAlgorithmId])
-	binary.Write(file, binary.BigEndian, enumToValue[input.SignatureAlgorithmId])
-	binary.Write(file, binary.BigEndian, input.SignatureSize)
-	binary.Write(file, binary.BigEndian, []byte(input.SignatureValue))
+	binary.Write(file, binary.LittleEndian, enumToValue[input.HashAlgorithmId])
+	binary.Write(file, binary.LittleEndian, enumToValue[input.SignatureAlgorithmId])
+	binary.Write(file, binary.LittleEndian, input.SignatureSize)
+	binary.Write(file, binary.LittleEndian, []byte(input.SignatureValue))
 	if input.AppInfoSize != 0 {
 		if input.AppInfoBytes != "" {
-			binary.Write(file, binary.BigEndian, input.AppInfoSize)
-			binary.Write(file, binary.BigEndian, []byte(input.AppInfoBytes))
+			binary.Write(file, binary.LittleEndian, input.AppInfoSize)
+			binary.Write(file, binary.LittleEndian, []byte(input.AppInfoBytes))
 		}
 	}
 }
