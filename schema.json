@@ -18,23 +18,25 @@
     ],
     "properties": {
         "manifestId": {
-            "description": "The manifest package identifier, 4 is firmware management id",
+            "description": "The manifest package identifier, 4 is firmware management id (PackageIdentifier LoRaWAN Firmware Management Protocol_rc2)",
             "type": "integer",
             "minimum": 1,
             "maximum": 255
         },
         "manifestVersion": {
+            "description": "The manifest package version, (PackageVersion LoRaWAN Firmware Management Protocol_rc2)",
             "type": "integer",
             "minimum": 1,
             "maximum": 255
         },
         "targetHardwareCount": {
-            "description": "This should allow us to define multiple HW versions, but maybe there is a better solution!!",
+            "description": "This should allow us to define multiple HW versions",
             "type": "integer",
             "minimum": 1,
             "maximum": 255
         },
         "targetHardwareUID": {
+            "description": "Array of the Hardware unique identifiers supported in this manifest",
             "type": "array",
             "minItems": 1,
             "items": {
